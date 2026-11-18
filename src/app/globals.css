@@ -1,0 +1,312 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #14252d;
+  --color-navy-deep: #0d1a20;
+  --color-ivory: #f7f5f0;
+  --color-champagne: #b99a68;
+  --color-champagne-soft: #d8c4a2;
+  --color-stone: #e8e5de;
+  --color-charcoal: #252a2c;
+
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.04;
+  }
+
+  ::selection {
+    background-color: var(--color-champagne);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-lux {
+    width: 100%;
+    max-width: 86rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-lux {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-lux {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-champagne);
+  }
+
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+
+  .eyebrow-plain::before {
+    display: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    padding: 1rem 1.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1;
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease,
+      border-color 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-gold {
+    background-color: var(--color-champagne);
+    color: #ffffff;
+  }
+
+  .btn-gold:hover {
+    background-color: #a8895a;
+  }
+
+  .btn-navy {
+    background-color: var(--color-navy);
+    color: var(--color-ivory);
+  }
+
+  .btn-navy:hover {
+    background-color: var(--color-navy-deep);
+  }
+
+  .btn-ivory {
+    background-color: var(--color-ivory);
+    color: var(--color-navy);
+  }
+
+  .btn-ivory:hover {
+    background-color: #ffffff;
+  }
+
+  .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+  }
+
+  .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .btn-outline-dark {
+    border-color: rgba(20, 37, 45, 0.25);
+    color: var(--color-navy);
+  }
+
+  .btn-outline-dark:hover {
+    background-color: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-ivory);
+  }
+
+  .link-underline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding-bottom: 0.35rem;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    opacity: 0.35;
+    transform-origin: left;
+    transition: opacity 0.35s ease;
+  }
+
+  .link-underline:hover::after {
+    opacity: 1;
+  }
+
+  .field {
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid rgba(20, 37, 45, 0.16);
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: 0.8125rem 0.9375rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    transition:
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .field::placeholder {
+    color: rgba(37, 42, 44, 0.38);
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--color-champagne);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(185, 154, 104, 0.14);
+  }
+
+  .field-dark {
+    border-color: rgba(247, 245, 240, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-ivory);
+  }
+
+  .field-dark::placeholder {
+    color: rgba(247, 245, 240, 0.45);
+  }
+
+  .label-lux {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(20, 37, 45, 0.62);
+  }
+
+  .gold-rule {
+    display: block;
+    width: 3.5rem;
+    height: 1px;
+    background-color: var(--color-champagne);
+  }
+}
+
+@keyframes lux-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lux-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: lux-fade-up 1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.animate-fade {
+  animation: lux-fade 1.4s ease both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-up,
+  .animate-fade {
+    animation: none;
+  }
+}
